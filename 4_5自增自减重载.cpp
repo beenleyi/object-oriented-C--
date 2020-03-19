@@ -11,19 +11,15 @@ class CHugeInt {
     public:
     CHugeInt(char * str){
         strcpy(s,str);
-
     }
     CHugeInt(int n){
-        sprintf(s,"%d",n);//从int转成string
-		
+        sprintf(s,"%d",n);//从int转成string	
     }
     CHugeInt(){
-    	s[0]='0';
 	}
 	friend CHugeInt & addint(CHugeInt & a, int b){
-        a.ans[0]=' ';
         int i=0;
-        for (;i<210;i++) a.ans[i]='0';
+		for (;i<210;i++) a.ans[i]='0'; 
         int la=strlen(a.s);
         char *s;
         s=new char[210];
@@ -52,6 +48,7 @@ class CHugeInt {
                 a.ans[max-1]=(s[lb-1]+temp-48-48)/10+48;
                 max--;lb--;
         }
+    //处理可能多出的0 
 	i=0;	
 	if (a.ans[0]=='0'){ while (a.ans[i+1]!='\0') {a.ans[i]=a.ans[i+1];i++;}
 	a.ans[i]='\0';}
@@ -78,9 +75,9 @@ class CHugeInt {
         return *this;
     }
 	CHugeInt operator++(int ){
-	CHugeInt tmp(s);
+		CHugeInt tmp(s);
         addint (*this,1);
-	strcpy(tmp.ans,tmp.s);
+		strcpy(tmp.ans,tmp.s);
         strncpy(this->s,this->ans,210);
         return tmp;
     }
@@ -93,7 +90,6 @@ int  main()
 { 
 	char s[210];
 	int n;
-
 	while (cin >> s >> n) {
 		CHugeInt a(s);
 		CHugeInt b(n);
