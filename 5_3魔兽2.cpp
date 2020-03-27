@@ -10,8 +10,9 @@ const char* weapon[3]={"sword","bomb","arrow"};
 //w_queue{dragon 、ninja、iceman、lion、wolf};
 int w_strength[5];
 class warrior{
-	public:
+	
 	int mynum,mystrength,mycolor;
+    public:
 	warrior(int hqcolor,int num,int strength,int kindnum,int total_in_hq){
 		mynum=num;
 		mystrength=strength;
@@ -25,17 +26,18 @@ class warrior{
 	};
 };
 class lion:public warrior{
-	public:
 	int myloyalty;
+    public:
 	lion(int hqcolor,int num,int strength,int kindnum,int total_lion_in_hq,int loyalty):warrior(hqcolor,num,strength,kindnum,total_lion_in_hq){
 		myloyalty=loyalty;
 		printf("It's loyalty is %d\n",myloyalty);
 	}
 };
 class dragon:public warrior{
-	public:
+	
 	double morale;
 	int weaponnum1;
+    public:
 	dragon(int hqcolor,int num,int strength,int kindnum,int total_lion_in_hq,int life):warrior(hqcolor,num,strength,kindnum,total_lion_in_hq){
 		weaponnum1=num%3;
 		morale=life/(double)strength;
@@ -43,8 +45,9 @@ class dragon:public warrior{
 	}
 };
 class ninja:public warrior{
-	public:
+	
 	int weaponnum1,weaponnum2;
+    public:
 	ninja(int hqcolor,int num,int strength,int kindnum,int total_lion_in_hq):warrior(hqcolor,num,strength,kindnum,total_lion_in_hq){
 		weaponnum1=num%3;
 		weaponnum2=(num+1)%3;
@@ -52,8 +55,9 @@ class ninja:public warrior{
 	}
 };
 class iceman:public warrior{
-	public:
+	
 	int weaponnum1;
+    public:
 	iceman(int hqcolor,int num,int strength,int kindnum,int total_lion_in_hq):warrior(hqcolor,num,strength,kindnum,total_lion_in_hq){
 		weaponnum1=num%3;
 		printf("It has a %s\n",weapon[weaponnum1]);
@@ -65,10 +69,12 @@ class wolf:public warrior{
 	}
 };
 class headquarter{
-	public:
+	
     //hqcolor=0:red;hqcolor=1
     int hqcolor;
-    int life,totalwarriors[WARRIORKINDNUM],num,hqstrength[WARRIORKINDNUM],making_w,warriorkind;
+    int life,totalwarriors[WARRIORKINDNUM],num,warriorkind;
+    public:
+    int hqstrength[WARRIORKINDNUM],making_w; 
     headquarter(int k,int life);
     void makingwarrior();
     int createsuccess();
